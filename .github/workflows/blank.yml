@@ -31,7 +31,7 @@ jobs:
           folders=$(find ./all_folder -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
           for folder in $folders; do
             echo "Running commands in $folder"
-            (cd ./all_folder/$folder && ls -haltr && zip -f $folder.zip * && unzip -f $folder.zip && cd ..)
+            (cd ./all_folder/$folder && ls -haltr && zip -f $folder.zip * && ls -haltr && unzip -f $folder.zip && cd ..)
           done
 
       # Runs a set of commands using the runners shell
