@@ -26,8 +26,15 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Run and check all folder
+        run: |
+          folders=$(find ./all_folder -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+          for folder in $folders; do
+            echo "Running commands in $folder"
+            (cd ./transformations/$folder &&
+             zip $folder.zip . && 
+             unzip $folder.zip && 
+             cd ..)
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
