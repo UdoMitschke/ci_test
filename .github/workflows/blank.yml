@@ -29,8 +29,7 @@ jobs:
       - name: Run and check all folder
         run: |
           folders=$(find ./all_folder -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
-          for folder in $folders; do
-            $transformation_name = $folder + "-staging"
+          for folder in $folders; do            
             echo "Running commands in $folder"
             (cd ./all_folder/$folder && ls -haltr && touch $transformation_name.zip && ls -haltr && rm $transformation_name.zip && ls -haltr && cd ..)
           done
