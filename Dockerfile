@@ -12,4 +12,4 @@ RUN mkdir all_folder
 COPY all_folder all_folder
 RUN chmod 755 -R all_folder
 
-CMD ["start"]
+CMD ["python3", "--version"]
