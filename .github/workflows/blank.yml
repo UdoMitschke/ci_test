@@ -38,6 +38,7 @@ jobs:
       - name: Build docker
         run: |
           echo "run build docker"
+          cat /etc/docker/daemon.json
           (
             pwd && ls -haltr && mkdir /home/runner/work/docker && touch /etc/docker/daemon.json && echo "{'data-root': '/home/runner/work/docker'}" > /etc/docker/daemon.json &&
             echo "Start building docker image" &&
