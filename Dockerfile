@@ -11,3 +11,5 @@ RUN sleep 20
 RUN mkdir all_folder
 COPY all_folder all_folder
 RUN chmod 755 -R all_folder
+
+CMD ["start"]

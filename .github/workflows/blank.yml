@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "run build docker"
           (
-            echo "Start building docker image
-            docker build -t udo .
+            echo "Start building docker image &&
+            docker build -t udo . &&
             echo "Finished all"
           )
