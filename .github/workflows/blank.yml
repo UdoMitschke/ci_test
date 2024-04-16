@@ -29,7 +29,7 @@ jobs:
         id: docker_cache
         uses: actions/cache@v3
         with:
-          path: /var/lib/docker/
+          path: ./docker_files
           key: ${{ runner.os }}-docker-udo1
           restore-keys: |
             ${{ runner.os }}-docker-udo1-
@@ -39,8 +39,8 @@ jobs:
         run: |
           echo "run build docker"
           (
-            pwd && ls -haltr && chmod 777 /var/lib/docker &&
+            pwd && ls -haltr && mkdir docker_files &&
             echo "Start building docker image" &&
-            docker build -t udo . &&
+            docker build -t udo .  ./docker_files &&
             echo "Finished all"
           )
