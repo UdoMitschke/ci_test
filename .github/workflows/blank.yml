@@ -37,7 +37,9 @@ jobs:
           TRANS_PATH: /home/runner/work/ci_test/ci_test/all_folder
       - name: Build docker
         run: |
-          echo "Start building docker image
-          docker build -t udo .
-          echo 'Finished all'
-          
+          echo "run build docker"
+          (
+            echo "Start building docker image
+            docker build -t udo .
+            echo "Finished all"
+          )
