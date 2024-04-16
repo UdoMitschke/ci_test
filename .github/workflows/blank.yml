@@ -36,10 +36,8 @@ jobs:
         env:
           TRANS_PATH: /home/runner/work/ci_test/ci_test/all_folder
       - name: Build docker
-        if: steps.docker_cache.outputs.cache-hit != 'true'
         run: |
-          (
-            echo "Start building docker image &&
-            docker build -t udo . &&
-            echo "Finished all"
-          )
+          echo "Start building docker image
+          docker build -t udo .
+          echo "Finished all"
+          
