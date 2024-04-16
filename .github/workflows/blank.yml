@@ -25,23 +25,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Cache Docker.
-        id: docker_cache
-        uses: actions/cache@v3
-        with:
-          path: ./docker_files
-          key: ${{ runner.os }}-docker-udo1
-          restore-keys: |
-            ${{ runner.os }}-docker-udo1-
-        env:
-          TRANS_PATH: /home/runner/work/docker
+      - uses: satackey/action-docker-layer-caching@v0.0.11
       - name: Build docker
         run: |
           echo "run build docker"
-          cat /etc/docker/daemon.json
           (
-            pwd && ls -haltr && mkdir /home/runner/work/docker && touch /etc/docker/daemon.json && echo "{'data-root': '/home/runner/work/docker'}" > /etc/docker/daemon.json &&
             echo "Start building docker image" &&
-            docker build -t udo -f ./Dockerfile  ./docker_files &&
+            docker build -t udo . &&
             echo "Finished all"
           )
