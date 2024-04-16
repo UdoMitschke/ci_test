@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "run build docker"
           (
-            pwd && ls -haltr &&
+            pwd && ls -haltr && chmod 777 /var/lib/docker &&
             echo "Start building docker image" &&
             docker build -t udo . &&
             echo "Finished all"
