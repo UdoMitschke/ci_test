@@ -34,12 +34,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-docker-udo1-
         env:
-          TRANS_PATH: /home/runner/work/ci_test/ci_test/all_folder
+          TRANS_PATH: /home/runner/work/docker
       - name: Build docker
         run: |
           echo "run build docker"
           (
-            pwd && ls -haltr && mkdir docker_files &&
+            pwd && ls -haltr && mkdir /home/runner/work/docker && touch /etc/docker/daemon.json && echo "{'data-root': '/home/runner/work/docker'}" > /etc/docker/daemon.json &&
             echo "Start building docker image" &&
             docker build -t udo -f ./Dockerfile  ./docker_files &&
             echo "Finished all"
