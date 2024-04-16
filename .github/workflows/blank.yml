@@ -25,18 +25,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run and check all folder
+      - name: Cache Docker.
+        id: docker_cache
+        uses: actions/cache@v3
+        with:
+          path: /var/lib/docker/
+          key: ${{ runner.os }}-docker-udo1
+          restore-keys: |
+            ${{ runner.os }}-docker-udo1-
+        env:
+          TRANS_PATH: /home/runner/work/ci_test/ci_test/all_folder
+      - name: Build docker
+        if: steps.docker_cache.outputs.cache-hit != 'true'
         run: |
-          folders=$(find ./all_folder -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
-          for folder in $folders; do
-            transformation_name="${folder}-staging";
-            echo "Running commands in $folder";
-            (cd ./all_folder/$folder && ls -haltr && touch $transformation_name.zip && ls -haltr && rm $transformation_name.zip && ls -haltr && cd ..)
-          done
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          (
+            echo "Start building docker image &&
+            docker build -t udo . &&
+            echo "Finished all"
+          )
