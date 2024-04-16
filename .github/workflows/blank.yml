@@ -41,6 +41,6 @@ jobs:
           (
             pwd && ls -haltr && mkdir docker_files &&
             echo "Start building docker image" &&
-            docker build -t udo .  ./docker_files &&
+            docker build -t udo -f ./Dockerfile  ./docker_files &&
             echo "Finished all"
           )
