@@ -1,5 +1,5 @@
 # Base image
-FROM ubuntu:latest
+FROM python:latest
 
 RUN sleep 15
 
