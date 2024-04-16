@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 RUN sleep 15
 
-RUN run pip install pandas
+RUN pip install pandas
 
 RUN sleep 20
 
