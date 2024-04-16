@@ -40,7 +40,7 @@ jobs:
           echo "run build docker"
           (
             pwd && ls -haltr &&
-            echo "Start building docker image &&
+            echo "Start building docker image" &&
             docker build -t udo . &&
             echo "Finished all"
           )
