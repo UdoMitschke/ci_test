@@ -42,7 +42,9 @@ jobs:
 
       - name: execute py script # run main.py
         id: python_check
-        run: python main.py './all_folder/f1/'
+        run: |
+          python main.py './all_folder/f1/'
+          echo "test='blub'" >> "$GITHUB_OUTPUT"
       - name: show output
         run: |
           echo "python_check: ${{ steps.python_check.outputs.pups }}"
