@@ -30,4 +30,4 @@ def print_key_value_pairs(data, prefix=''):
 
 if __name__ == "__main__":
     read_yaml()
-    print(f'::set-output name=test_report::{True}')
+    print(f'::set-output::{True}')
