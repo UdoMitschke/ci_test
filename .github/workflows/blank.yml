@@ -45,7 +45,7 @@ jobs:
         run: python main.py './all_folder/f1/'
       - name: show output
         run: |
-          echo "python_check: ${{ steps.python_check.outputs.test }}"
+          echo "python_check: ${{ steps.python_check.outputs }}"
       - name: ok
         if: steps.python_check.test == 'True'
         run: exit 1
