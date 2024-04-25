@@ -29,5 +29,6 @@ def print_key_value_pairs(data, prefix=''):
 
 
 if __name__ == "__main__":
+    os.system(f'echo "test=True" >> "$GITHUB_OUTPUT"')
     read_yaml()
-    os.system(f'echo "test={True}" >> "$GITHUB_OUTPUT"')
+    os.system(f'echo "test=True" >> "$GITHUB_OUTPUT"')
