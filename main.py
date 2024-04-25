@@ -32,4 +32,4 @@ if __name__ == "__main__":
     read_yaml()
     output_file = os.getenv('GITHUB_OUTPUT')
     with open(output_file, "a") as myfile:
-        myfile.write(f"TEST={True}")
+        myfile.write(f"test={True}")
