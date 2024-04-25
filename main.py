@@ -19,6 +19,7 @@ def read_yaml(path):
 
 
 def print_key_value_pairs(data, prefix=''):
+    os.system(f'echo "test=True" >> "$GITHUB_OUTPUT"')
     if not data['info']['active'] == 'true':
         return
     for key, value in data.items():
@@ -30,4 +31,4 @@ def print_key_value_pairs(data, prefix=''):
 
 if __name__ == "__main__":
     read_yaml()
-    os.system(f'echo "test=True" >> "$GITHUB_OUTPUT"')
+
