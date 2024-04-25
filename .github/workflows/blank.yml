@@ -42,7 +42,7 @@ jobs:
 
       - name: execute py script # run main.py
         id: python_check
-        run: python main.py
+        run: python main.py './all_folder/f1/'
       - name: ok
         if: steps.python_check.test_report == 'True'
         run: exit 1
