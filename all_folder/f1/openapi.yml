@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: random_number
+  description: Generate random numbers from a distribuition of your choosing
+  version: 0.1.0
+  active: true
+  public: true
+servers:
+  # server base URLs, where you host this API
+  - url: https://api.com
+    description: Main (production) server
+  - url: https://api.com
+    description: Internal staging server for testing
+paths:
+  /random_number:
+    post:
+      summary: generate random numbers
+      description: generate random numbers from a distribution of your choosing
+      parameters:
+        - name: min
+          in: query
+          required: true
+          description: lower bound of distribution
+          schema:
+            type : number
+            minimum: 0
+            maximum: 999
+            default: 1
+        - name: max
+          in: query
+          required: true
+          description: upper bound of distribution
+          schema:
+            type : number
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: size
+          in: query
+          required: true
+          description: how many numbers to return
+          schema:
+            type : integer
+            format: int64
+            minimum: 2
+            maximum: 1000,
+            default: 200
+        - name: dist
+          in: query
+          required: true
+          description: distribution from which to generate random numbers
+          schema:
+            type : string
+            enum: [uniform, normal, exponential]
+            default: uniform
+      responses:
+        '200':    # status code
+          description: vector of random numbers of the specified size
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: double

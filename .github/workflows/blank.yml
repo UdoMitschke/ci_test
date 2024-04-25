@@ -30,3 +30,22 @@ jobs:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: execute py script # run main.py
+        id: python_check
+        run: python main.py
+      - name: ok
+        if: steps.python_check.test_report == 'True'
+        run: exit 1
+      - name: not ok
+        if: steps.python_check.test_report == 'False'
+        run: exit 1
