@@ -1,13 +1,20 @@
+import os
+
+import click
 import yaml
 
 
-def read_yaml(file_path):
+@click.command()
+@click.argument('path')
+def read_yaml(path):
+    file_path = path + "openapi.yml"
     with open(file_path, 'r') as file:
         try:
             yaml_content = yaml.safe_load(file)
         except yaml.YAMLError as exc:
             print(exc)
             return
+        print(yaml_content)
         print_key_value_pairs(yaml_content)
 
 
@@ -22,5 +29,5 @@ def print_key_value_pairs(data, prefix=''):
 
 
 if __name__ == "__main__":
-    read_yaml('/Users/udomitschke/private/ci_test/all_folder/f1/openapi.yml')
+    read_yaml()
     print(f'::set-output name=test_report::{True}')
