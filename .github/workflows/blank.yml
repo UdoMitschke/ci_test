@@ -44,8 +44,8 @@ jobs:
         id: python_check
         run: python main.py './all_folder/f1/'
       - name: ok
-        if: steps.python_check.test_report == 'True'
+        if: steps.python_check.test == 'True'
         run: exit 1
       - name: not ok
-        if: steps.python_check.test_report == 'False'
+        if: steps.python_check.test == 'False'
         run: exit 1
