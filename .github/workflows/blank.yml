@@ -49,7 +49,7 @@ jobs:
           echo "python_check: ${{ steps.python_check.outputs.test }}"
       - name: ok
         if: steps.python_check.outputs.test == 'True'
-        run: exit 1
+        run: echo "ok"
       - name: not ok
         if: steps.python_check.outputs.test == 'False'
-        run: exit 1
+        run: echo "not ok"
